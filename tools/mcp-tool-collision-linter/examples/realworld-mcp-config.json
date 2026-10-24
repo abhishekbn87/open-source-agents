@@ -1,26 +1,26 @@
 {
   "mcpServers": {
-    "playwright": {
+    "filesystem": {
       "command": "npx",
       "args": [
         "-y",
-        "@playwright/mcp@latest",
-        "--headless"
+        "@modelcontextprotocol/server-filesystem",
+        "${PROJECT_DIR}"
       ]
     },
-    "fetch": {
-      "command": "npx",
+    "git": {
+      "command": "uvx",
       "args": [
-        "-y",
-        "mcp-fetch-server"
+        "mcp-server-git",
+        "--repository",
+        "${PROJECT_DIR}"
       ]
     },
-    "context7": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@upstash/context7-mcp"
-      ]
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
     },
     "memory": {
       "command": "npx",
@@ -29,12 +29,10 @@
         "@modelcontextprotocol/server-memory"
       ]
     },
-    "filesystem": {
-      "command": "npx",
+    "fetch": {
+      "command": "uvx",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "./workspace"
+        "mcp-server-fetch"
       ]
     }
   }
